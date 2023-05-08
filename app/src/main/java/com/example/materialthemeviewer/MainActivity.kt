@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.rememberSplineBasedDecay
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -36,8 +37,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.text.style.TextAlign
@@ -575,6 +579,7 @@ fun Error(name: String) {
 fun Surface(name: String) {
     val haptic = LocalHapticFeedback.current
     val context = LocalContext.current
+    val tonalElevations = LocalAbsoluteTonalElevation
     Column{
         Row {
             Surface(
@@ -593,7 +598,8 @@ fun Surface(name: String) {
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
                 shape = RoundedCornerShape(chipScale),
-                color = MaterialTheme.colorScheme.surface
+                color = MaterialTheme.colorScheme.surface,
+                tonalElevation= 1.dp,
             ) {
                 Text(
                     text = "Surface",
