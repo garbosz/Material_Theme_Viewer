@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.rememberSplineBasedDecay
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -65,7 +66,11 @@ fun DefaultPreview() {
 @Composable
 fun layout(){
     MaterialThemeViewerTheme {
-        val scrollBehavior = remember { Material3TopAppBarDefaults.pinnedScrollBehavior() }
+        val decayAnimationSpec = rememberSplineBasedDecay<Float>()
+        val scrollBehavior = remember(decayAnimationSpec) {
+            Material3TopAppBarDefaults.exitUntilCollapsedScrollBehavior(decayAnimationSpec)
+        }
+        //val scrollBehavior = remember { Material3TopAppBarDefaults.pinnedScrollBehavior() }
         val topAppBarElementColor = MaterialTheme.colorScheme.onSurface
 
         Scaffold(
@@ -96,35 +101,38 @@ fun layout(){
             ) {
                 item {
                     Primary("Primary")
-                    Spacer(modifier = Modifier.height(10.dp))
+                    //Spacer(modifier = Modifier.height(10.dp))
                 }
                 item {
                     Secondary("Secondary")
-                    Spacer(modifier = Modifier.height(10.dp))
+                    //Spacer(modifier = Modifier.height(10.dp))
                 }
                 item {
                     Tertiary("Tertiary")
-                    Spacer(modifier = Modifier.height(10.dp))
+                    //Spacer(modifier = Modifier.height(10.dp))
                 }
                 item {
                     Surface("Surface")
-                    Spacer(modifier = Modifier.height(10.dp))
+                    //Spacer(modifier = Modifier.height(10.dp))
                 }
                 item {
                     Error("Error")
-                    Spacer(modifier = Modifier.height(10.dp))
+                    //Spacer(modifier = Modifier.height(10.dp))
                 }
                 item {
                     Background("Background")
-                    Spacer(modifier = Modifier.height(10.dp))
+                    //Spacer(modifier = Modifier.height(10.dp))
                 }
                 item {
-                    Spacer(modifier = Modifier.height(16.dp))
+                    //Spacer(modifier = Modifier.height(16.dp))
                 }
             }
         }
     }
 }
+
+val chipHeight=98.dp
+val chipScale=16.dp
 
 //Primary color block
 @Composable
@@ -137,7 +145,7 @@ fun Primary(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -149,7 +157,7 @@ fun Primary(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.primary
             ) {
                 Text(
@@ -161,7 +169,7 @@ fun Primary(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -173,7 +181,7 @@ fun Primary(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.onPrimary
             ) {
                 Text(
@@ -187,7 +195,7 @@ fun Primary(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(100.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -199,7 +207,7 @@ fun Primary(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.primaryContainer
             ) {
                 Text(
@@ -211,7 +219,7 @@ fun Primary(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(100.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -223,7 +231,7 @@ fun Primary(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.onPrimaryContainer
             ) {
                 Text(
@@ -246,7 +254,7 @@ fun Secondary(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -258,7 +266,7 @@ fun Secondary(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.secondary
             ) {
                 Text(
@@ -270,7 +278,7 @@ fun Secondary(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -282,7 +290,7 @@ fun Secondary(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.onSecondary
             ) {
                 Text(
@@ -296,7 +304,7 @@ fun Secondary(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(100.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -308,7 +316,7 @@ fun Secondary(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.secondaryContainer
             ) {
                 Text(
@@ -320,7 +328,7 @@ fun Secondary(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(100.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -332,7 +340,7 @@ fun Secondary(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.onSecondaryContainer
             ) {
                 Text(
@@ -355,7 +363,7 @@ fun Tertiary(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -367,7 +375,7 @@ fun Tertiary(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.tertiary
             ) {
                 Text(
@@ -379,7 +387,7 @@ fun Tertiary(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -391,7 +399,7 @@ fun Tertiary(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.onTertiary
             ) {
                 Text(
@@ -405,7 +413,7 @@ fun Tertiary(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(100.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -417,7 +425,7 @@ fun Tertiary(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.tertiaryContainer
             ) {
                 Text(
@@ -429,7 +437,7 @@ fun Tertiary(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(100.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -441,7 +449,7 @@ fun Tertiary(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.onTertiaryContainer
             ) {
                 Text(
@@ -463,7 +471,7 @@ fun Error(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -475,7 +483,7 @@ fun Error(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.error
             ) {
                 Text(
@@ -487,7 +495,7 @@ fun Error(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -499,7 +507,7 @@ fun Error(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.onError
             ) {
                 Text(
@@ -513,7 +521,7 @@ fun Error(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -525,7 +533,7 @@ fun Error(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.errorContainer
             ) {
                 Text(
@@ -537,7 +545,7 @@ fun Error(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -549,7 +557,7 @@ fun Error(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.onErrorContainer
             ) {
                 Text(
@@ -572,7 +580,7 @@ fun Surface(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -584,7 +592,7 @@ fun Surface(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.surface
             ) {
                 Text(
@@ -596,7 +604,7 @@ fun Surface(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -608,7 +616,7 @@ fun Surface(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.onSurface
             ) {
                 Text(
@@ -622,7 +630,7 @@ fun Surface(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -634,7 +642,7 @@ fun Surface(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.surfaceVariant
             ) {
                 Text(
@@ -646,7 +654,7 @@ fun Surface(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -658,7 +666,7 @@ fun Surface(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             ) {
                 Text(
@@ -681,7 +689,7 @@ fun Background(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -693,7 +701,7 @@ fun Background(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.background
             ) {
                 Text(
@@ -705,7 +713,7 @@ fun Background(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -717,7 +725,7 @@ fun Background(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.onBackground
             ) {
                 Text(
@@ -731,7 +739,7 @@ fun Background(name: String) {
             Surface(
                 modifier = Modifier
                     .weight(1f)
-                    .height(80.dp)
+                    .height(chipHeight)
                     .padding(4.dp)
                     .clickable(
                         indication = rememberRipple(
@@ -743,7 +751,7 @@ fun Background(name: String) {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         Toast.makeText(context, "Material You Colors!", Toast.LENGTH_SHORT).show()
                     },
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(chipScale),
                 color = MaterialTheme.colorScheme.outline
             ) {
                 Text(
