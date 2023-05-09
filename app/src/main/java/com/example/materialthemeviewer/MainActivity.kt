@@ -38,6 +38,7 @@ import com.example.materialthemeviewer.ui.theme.MaterialThemeViewerTheme
 import androidx.compose.material3.TopAppBarDefaults as Material3TopAppBarDefaults
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+<<<<<<< HEAD
 import androidx.compose.foundation.layout.wrapContentSize
 //import androidx.compose.material3.Divider
 //import androidx.compose.material3.DropdownMenu
@@ -47,6 +48,18 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+=======
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowCompat
+>>>>>>> parent of 626a15f (surface tonal elecavation help PC laggy)
 
 class MainActivity : ComponentActivity() {
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -715,8 +728,12 @@ fun Surface(name: String) {
                             .show()
                     },
                 shape = RoundedCornerShape(chipScale),
+<<<<<<< HEAD
                 color = MaterialTheme.colorScheme.surface,
                 tonalElevation= elevation,
+=======
+                color = MaterialTheme.colorScheme.surface
+>>>>>>> parent of 626a15f (surface tonal elecavation help PC laggy)
             ) {
                 Text(
                     text = "Surface",
