@@ -729,8 +729,12 @@ fun Surface(name: String) {
                     },
                 shape = RoundedCornerShape(chipScale),
 <<<<<<< HEAD
+<<<<<<< HEAD
                 color = MaterialTheme.colorScheme.surface,
                 tonalElevation= elevation,
+=======
+                color = MaterialTheme.colorScheme.surface
+>>>>>>> parent of 626a15f (surface tonal elecavation help PC laggy)
 =======
                 color = MaterialTheme.colorScheme.surface
 >>>>>>> parent of 626a15f (surface tonal elecavation help PC laggy)
